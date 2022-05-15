@@ -1,2 +1,2 @@
 # selenium-serenityBDD
-used technologies/tools : Selenium, SerenityBDD, Junit, Cucumber, concept Page Object Model (POM)
+used technologies/tools : Selenium, SerenityBDD, Junit, Cucumber, (POM) Page Object Model concept
