@@ -6,7 +6,6 @@ import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
 import page.LoginPage;
 
-import java.util.concurrent.locks.Condition;
 
 public class LoginStep {
 
@@ -48,10 +47,10 @@ public class LoginStep {
 
     @Then("user see result {string}")
     public void userSeeResult(String result) {
-        if (result.equals("warning")){
+        if(result.equals("text username")){
+            loginPage.validatelogin();
+        }else if (result.equals("warning")){
             loginPage.validateFormAppears();
-        }else if (result.equals("text username")){
-
         }else {
             loginPage.errorMessageAppear();
         }
