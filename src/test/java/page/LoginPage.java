@@ -6,28 +6,64 @@ import org.openqa.selenium.By;
 
 public class LoginPage extends PageObject {
 
+    private By loginButton(){
+        return By.id("login");
+    }
+
+    private By usernameField(){
+        return By.id("userName");
+    }
+
+    private By passwordField(){
+        return By.id("password");
+    }
+
+    private By textUsername(){
+        return By.id("userName-value");
+    }
+
+    private By errorMessage(){
+        return By.id("name");
+    }
+
     @Step
     public void openUrl(){
         openAt("/books");
     }
     @Step
-    public void clickForLogin(){
-        find(By.id("login")).click();
+    public void clickLogin(){
+        $(loginButton()).click();
     }
     @Step
-    public void enterUsername(){
-        find(By.id("userName")).sendKeys("ways77");
+    public void enterValidUsername(){
+        $(usernameField()).sendKeys("ways77");
     }
     @Step
-    public void enterPassword(){
-        find(By.id("password")).sendKeys("Minumair77!");
+    public void enterValidPassword(){
+        $(passwordField()).sendKeys("Minumair77!");
+    }
+
+    @Step
+    public boolean validatelogin(){
+        return $(textUsername()).isDisplayed();
+    }
+
+    @Step
+    public void inputUsername(String username){
+        $(usernameField()).sendKeys(username);
     }
     @Step
-    public void submitLogin() {
-        find(By.id("login")).click();
+    public void inputPassword(String password){
+        $(passwordField()).sendKeys(password);
+    }
+
+    @Step
+    public boolean validateFormAppears(){
+        return $(usernameField()).isDisplayed();
     }
     @Step
-    public boolean validateTextUsername(){
-        return find(By.id("userName-value")).isDisplayed();
+    public boolean errorMessageAppear(){
+        return $(errorMessage()).isDisplayed();
     }
+
 }
