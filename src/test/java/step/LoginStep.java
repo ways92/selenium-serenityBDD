@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.thucydides.core.annotations.Steps;
+import page.AddEmployeePage;
 import page.LoginPage;
 
 
@@ -13,46 +14,70 @@ public class LoginStep {
     LoginPage loginPage;
 
 
-    @Given("user on page")
+    @Given("User on page")
     public void adminOnPage() {
         loginPage.openUrl();
     }
 
-    @When("user click login to navigate form page")
-    public void userClickLoginToEnterForm() {
-        loginPage.clickLogin();
-    }
-
-    @When("user enter username and password")
+    @When("User enter username and password")
     public void userEnterUsernameAndPassword()  {
         loginPage.enterValidUsername();
         loginPage.enterValidPassword();
     }
 
-    @When("user click on login button to submit")
+    @When("User click on login button to submit")
     public void userClickOnLoginButtonToSubmit() {
         loginPage.clickLogin();
     }
 
-    @Then("user see username on dashboard")
-    public void userSeeUsernameOnDashboard() {
+    @Then("User see quick launch panel on dashboard")
+    public void userSeeQuickLaunchPanelOnDashboard() {
         loginPage.validatelogin();
     }
 
-    @When("user enter username and password {string} {string}")
+    @When("User enter username and password {string} {string}")
     public void userEnterUsernameAndPassword(String username, String password) {
         loginPage.inputUsername(username);
         loginPage.inputPassword(password);
     }
 
-    @Then("user see result {string}")
+    @Then("User see result {string}")
     public void userSeeResult(String result) {
-        if(result.equals("text username")){
+        if(result.equals("quick launch panel")){
             loginPage.validatelogin();
-        }else if (result.equals("warning")){
-            loginPage.validateFormAppears();
         }else {
             loginPage.errorMessageAppear();
         }
     }
+
+//    @Steps
+//    AddEmployeePage addEmployeePagePage;
+//
+//    @When("Click PIM on menu")
+//    public void clickPIMOnMenu() {
+//        addEmployeePagePage.clickPimButton();
+//    }
+//
+//    @When("Click Add Employee on submenu")
+//    public void clickAddEmployeeOnSubmenu() {
+//        addEmployeePagePage.clickAddPimButton();
+//    }
+//
+//    @When("Enter first name, middle name, last name, employee id")
+//    public void enterFirstNameMiddleNameLastNameEmployeeId() {
+//        addEmployeePagePage.enterFirtname();
+//        addEmployeePagePage.enterMiddlename();
+//        addEmployeePagePage.enterLastname();
+//        addEmployeePagePage.enterEmployeeId();
+//    }
+//
+//    @When("Click save")
+//    public void clickSave() {
+//    }
+//
+//    @Then("User get new employee")
+//    public void userGetNewEmployee() {
+//    }
+
+
 }
